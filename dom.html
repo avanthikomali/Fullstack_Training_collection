@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <p class="count"> 0 </p>
+    <button class="button">decrement</button>
+    <script>
+        //getElementId
+        count=document.getElementsByClassName("count")[0]
+        button=document.getElementsByClassName("button")[0]
+        button.addEventListener("click",
+        function(){
+            count.textContent= Number(count.textContent)-1
+        })
+    </script>
+</body>
+</html>
