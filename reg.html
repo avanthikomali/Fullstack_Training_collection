@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <h2>REGISTRATION FORM</h2>
+</head>
+<body>
+    <form id="registration form" action="/register">
+        <label>Fullname:</label>
+        <input type="text" name="Fullname"required>
+        <br><br>
+        <label>username:</label>
+        <input type="text" name="username"required>
+        <br><br>
+        <label>email:</label>
+        <input type="email" name="email"required>
+        <br><br>
+        <label>password:</label>
+        <input type="password" name="password"required>
+        <br><br>
+        <label>confirmpassword:</label>
+        <input type="password" name="confirmpassword"required>
+        <br><br>
+        <label>phoneno:</label>
+        <input type="tel" name="phoneno"required>
+        <br><br>
+        <label>DOB:</label>
+        <input type="date" name="DOB"required>
+        <br><br>
+        <label>Gender:</label>
+        <input type="radio" name="Gender"value="male">male
+        <input type="radio" name="Gender"value="female">female
+        <input type="radio" name="Gender"value="others">others
+        <br><br>
+        <label>Address:</label>
+        <textarea></textarea>
+        <br><br>
+        <label>city:</label>
+        <input type="text" name="city"required>
+        <br><br>
+        <label>state:</label>
+        <select id="state">
+            <option>selectstate</option>
+            <option>Andhra pradesh</option>
+            <option>madhya pradesh</option>
+            <option>himachal pradesh</option>
+            <option>kerala</option>
+            <option>telangana</option>
+        </select>
+        <br><br>
+        <label>Country:</label>
+        <select id="Country">
+            <option>Indonesia</option>
+            <option>Australlia</option>
+            <option>Mexico</option>
+            <option>UK</option>
+            <option>Chicago</option>
+        </select>
+        <br><br>
+        <label>pincode:</label>
+        <input type="text" name="pincode"required>
+        <br><br>
+        <label>upload profile picture:</label>
+        <input type="file" name="upload profile picture"optional>
+        <br><br>
+        <label>Hobbies:</label>
+        <input type="checkbox" name="Hobbies"value="chess"optional>chess
+        <input type="checkbox" name="Hobbies"value="journal"optional>journal
+        <input type="checkbox" name="Hobbies"value="reading"optional>reading
+        <br><br>
+        <label>termsandconditions:</label>
+        <input type="checkbox" name="termsandconditions">i agreed to the termsandconditions
+        <br><br>
+        <input type="submit" value="register">
+        <input type="reset"value="reset">
+        <script>
+            document.getElementById("registration form").addEventListener("submit",function(event){
+                event.preventDefault()
+                let fullname=document.getElementById("fullname").value
+                console.log(fullname)
+            })
+        </script>
+    </form>
+</body>
+</html>
