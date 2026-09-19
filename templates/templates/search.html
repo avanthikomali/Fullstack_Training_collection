@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Employee</title>
+</head>
+<body>
+    
+    <!--_NAVBAR-->
+    <nav class="navbar">
+
+        <div class="logo">
+            Employee Management System
+        </div>
+        <ul class="nav-links">
+
+            <li>
+                <a href="{{ url_for( 'home' ) }}">
+                    Home
+                </a>
+            <li>
+                <a href="{{ url_for( 'employees' )}}">
+                    Employees
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for( 'add_employee_page' )}}">
+                   Add  Employees
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for( ' search_employee' )}}">
+                    Search
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for( ' login_page' ) }}"
+                    class="login_btn">
+                    Login
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for( 'register_page' ) }}"
+                    class="register_btn">
+                    Register
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!--------Title------------->
+
+    <h1>
+        Search Employee
+    </h1>
+
+    <!----------SEARCH BOX-------------->
+
+    <div class="search_box">
+
+        <form action="{{ url_for( 'search_employee') }}"
+              method="POST">
+
+              <label>
+                 Employee Name:
+              </label>
+              <input
+            </form>
+    </div>
+</body>
+</html>
