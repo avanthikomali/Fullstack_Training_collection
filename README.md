@@ -1,21 +1,18 @@
-# 👩‍💼 Employee Management System - Flask
+# 💻 Full Stack Training - Avanthi Komali
 
-A simple CRUD app to manage employees built with Python Flask & SQLite.
+This repository contains all my Full Stack Development practice codes from college training + my main project.
 
-### ✨ Features
-- ➕ Add Employee (Name, Email, Dept, Salary)
-- 📋 View All Employees
-- 🔍 Search by Name / Department  
-- ❌ Delete Employee
+### 📁 Folder Structure
+- `templates/` - Employee Management System templates (Flask)
+- `todo application/` - To-Do App (JavaScript Project)
+- `dom1.html`, `tag.html`, `timetable.html`, `register.html` - HTML/CSS Practice
+- `app.py` - Employee Management Main Server
 
-### 🛠️ Tech Stack
-Python, Flask, SQLite, HTML, CSS
+### 🚀 Main Project: Employee Management System
+**Tech:** Python Flask, SQLite
+**Features:** Add, View, Search, Delete Employee
 
-### 🚀 How to Run
-pip install flask
-python app.py
-
-Then open: http://127.0.0.1:5000
+How to Run: pip install flask -> python app.py
 
 ### 👩‍💻 Author
-Avanthi Komali | Aspiring Python Developer | Rajahmundry
+Avanthi Komali | Rajahmundry | Aspiring Full Stack Developer
