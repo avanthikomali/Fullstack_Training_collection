@@ -20,6 +20,26 @@ def get_database_connection( ):
     connection.row_factory = sqlite3.Row
 
     return connection
+def init_db():
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+    # users table
+    cursor.execute('''CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        fullname TEXT NOT NULL,
+        username TEXT NOT NULL UNIQUE,
+        password TEXT NOT NULL
+    )''')
+    # employees table kuda unte - naku telidu, nuvvu add cheyyali
+    cursor.execute('''CREATE TABLE IF NOT EXISTS employees (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        email TEXT,
+        department TEXT
+    )''')
+    conn.commit()
+    conn.close()
+init_db( )
 
 
 # =========================================
