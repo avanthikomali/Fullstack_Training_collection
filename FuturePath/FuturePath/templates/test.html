@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FuturePath Premium</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+ <style>
+
+body{
+
+ background: linear-gradient(135deg, #667eea, #764ba2);
+
+ min-height: 100vh;
+
+ font-family: Poppins, sans-serif;
+
+}
+</style>   
+
+</head>
+
+<body class="flex items-center justify-center min-h-screen p-4">
+
+<div class="glass p-8 w-[420px]">
+
+<h1 class="text-3xl font-bold text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">FuturePath AI</h1>
+
+<p class="text-center text-gray-500 mb-6">Charts + Chatbot + PDF</p>
+
+<form method="POST" action="/predict">
+
+<input type="text" name="name" placeholder="Your Name" required class="w-full border p-3 rounded-xl mb-3">
+
+<input type="email" name="email" placeholder="Email" required class="w-full border p-3 rounded-xl mb-3">
+
+<input type="text" name="phone" placeholder="Phone" required class="w-full border p-3 rounded-xl mb-3">
+
+<input type="text" name="school" placeholder="School" required class="w-full border p-3 rounded-xl mb-3">
+
+<input type="number" name="marks" placeholder="Marks" required class="w-full border p-3 rounded-xl mb-3">
+
+<input type="text" name="interest" placeholder="Interest (Tech/Art)" required class="w-full border p-3 rounded-xl mb-5">
+
+<button type="submit" class="w-full btn-premium text-white py-3 rounded-xl font-bold">Find Career 🚀</button>
+
+</form>
+
+</div>
+
+<!-- CHATBOT -->
+
+<div class="chatbot-bubble">
+
+    <button onclick="toggleChat()" 
+
+    class="bg-purple-600 text-white w-14 h-14 rounded-full shadow-lg text-2xl">🤖</button>
+
+</div>
+
+<div id="chatWindow" 
+
+class="chat-window flex flex-col">
+
+<div class="bg-purple-600 text-white p-4 rounded-t-xl font-bold">FuturePath Bot 🤖 
+
+    <span onclick="toggleChat()" class="float-right cursor-pointer">X</span>
+
+</div>
+
+<div id="chatBody"
+
+ class="flex-1 p-4 overflow-y-auto text-sm">
+
+ <p class="bg-gray-100 p-2 rounded mb-2">Hi! Nee interest cheppu!</p>
+
+</div>
+
+<div class="p-3 border-t flex">
+
+    <input id="chatInput" placeholder="Type..." class="flex-1 border rounded-full px-4 py-2 text-sm">
+    <button onclick="sendChat()" class="bg-purple-600 text-white px-4 rounded-full ml-2">Send</button>
+</div>
+</div>
+
+<script>
+function toggleChat()
+{
+    let w=document.getElementById('chatWindow'); 
+
+w.style.display=w.style.display=='flex'?
+'none':'flex';
+}
+
+function sendChat()
+
+{
+    let inp=document.getElementById('chatInput'); 
+
+    let msg=inp.value;
+     if(!msg) return; 
+     document.getElementById('chatBody').innerHTML+=`<p class="bg-blue-100 p-2 rounded mb-2 text-right">${msg}</p>`;
+
+      fetch('/chatbot-api',{method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({message:msg})}).then(r=>r.json()).then(d=>{document.getElementById('chatBody').innerHTML+=`<p class="bg-gray-100 p-2 rounded mb-2">${d.reply}</p>`;
+    }
+    );
+     inp.value='';
+    }
+
+</script>
+
+</body>
+
+</html>

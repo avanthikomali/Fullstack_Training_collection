@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Result</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body{
+
+  font-family:'Poppins',sans-serif;
+
+  background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+
+}
+
+.glass{background:rgba(255,255,255,0.95); 
+
+    backdrop-filter:blur(15px);
+
+     border-radius:20px;
+
+      box-shadow:0 20px 40px rgba(0,0,0,0.2);
+    }
+
+.btn-premium{background:linear-gradient(90deg,#667eea,#764ba2);
+}
+</style>
+
+</head>
+
+<body class="p-4">
+
+<div class="glass p-8 w-[450px] text-center">
+
+  <div class="text-6xl mb-4">🎉</div>
+
+  <h1 class="text-3xl font-bold text-purple-700">Career Result</h1>
+
+  <p class="text-gray-500 mb-6">Suggested Career</p>
+
+  <div class="bg-gradient-to-r from-purple-100 to-blue-100 p-6 rounded-xl mb-6">
+
+    <p class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">{{career}}</p>
+
+    <div class="mt-4 text-left text-sm space-y-1">
+
+      <p><b>Name:</b> {{name}}</p>
+
+      <p><b>School:</b> {{school}}</p>
+
+      <p><b>Marks:</b> {{marks}}%</p>
+
+      <p><b>Interest:</b> {{interest}}</p>
+
+    </div>
+
+  </div>
+
+  <button onclick="downloadPDF()" class="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-xl font-bold mb-3">📄 Download PDF</button>
+
+  <div class="grid grid-cols-2 gap-3">
+
+    <a href="/" class="bg-gray-200 py-3 rounded-xl font-bold text-center">🔄 Again</a>
+
+    <a href="/dashboard" class="btn-premium text-white py-3 rounded-xl font-bold text-center">📊 Dashboard</a>
+
+  </div>
+
+</div>
+
+<script>
+
+function downloadPDF()
+{
+  const {jsPDF} = window.jspdf;
+
+  const doc = new jsPDF();
+
+  doc.setFillColor(102,126,234); 
+
+  doc.rect(0,0,210,40,'F');
+
+  doc.setTextColor(255,255,255); 
+
+  doc.setFontSize(22);
+
+   doc.text("FuturePath AI - Career Report",20,25);
+
+  doc.setTextColor(0,0,0); doc.setFontSize(12);
+
+  doc.text(`Name: {{name}}`,20,60);
+
+  doc.text(`Email: {{email}}`,20,70);
+
+  doc.text(`Phone: {{phone}}`,20,80);
+
+  doc.text(`School: {{school}}`,20,90);
+
+  doc.text(`Marks: {{marks}}%`,20,100);
+
+  doc.text(`Interest: {{interest}}`,20,110);
+
+  doc.setFontSize(16); 
+  doc.text(`Suggested Career: {{career}}`,20,130);
+  
+  doc.save(`FuturePath_{{name}}.pdf`);
+}
+</script>
+</body>
+</html>

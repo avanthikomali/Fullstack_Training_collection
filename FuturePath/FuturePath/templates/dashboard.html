@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard Charts</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body style="background:#f3f4f6; 
+min-height:100vh;
+ padding:24px;
+  font-family:Poppins,sans-serif;">
+
+<h1 class="text-3xl font-bold text-center mb-6">📊 Dashboard - Avanthi</h1>
+
+<div class="grid grid-cols-2 gap-4 max-w-5xl mx-auto mb-6">
+
+  <div class="bg-white p-6 rounded-xl shadow text-center">
+    <p class="text-gray-500">Total Students</p>
+    <p class="text-3xl font-bold text-purple-600">{{total}}</p></div>
+  <div class="bg-white p-6 rounded-xl shadow text-center">
+    <p class="text-gray-500">Avg Marks</p>
+    <p class="text-3xl font-bold text-green-600">{{avg}}</p>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-8">
+
+  <div class="bg-white p-6 rounded-xl shadow">
+    <h2 class="font-bold text-center mb-3">Career Pie Chart</h2>
+    <canvas id="pieChart" style="max-height:300px;"></canvas>
+</div>
+
+  <div class="bg-white p-6 rounded-xl shadow">
+    <h2 class="font-bold text-center mb-3">Marks Bar Chart</h2>
+    <canvas id="barChart" style="max-height:300px;"></canvas>
+</div>
+</div>
+
+<div class="bg-white max-w-5xl mx-auto rounded-xl shadow overflow-hidden">
+
+<table class="w-full text-sm">
+
+<thead class="bg-purple-600 text-white">
+
+    <tr>
+        <th class="p-3">ID</th>
+        <th class="p-3">Name</th>
+        <th class="p-3">Career</th>
+        <th class="p-3">Marks</th>
+        <th class="p-3">Del</th>
+    </tr>
+
+</thead>
+
+<tbody>
+
+{% for s in students %}
+
+<tr class="border-b text-center">
+    <td class="p-3">{{s[0]}}</td>
+    <td class="p-3">{{s[1]}}</td>
+    <td class="p-3 font-bold text-purple-600">{{s[7]}}</td>
+    <td class="p-3">{{s[5]}}</td>
+    <td class="p-3"><button onclick="fetch('/delete-student/{{s[0]}}').then(()=>location.reload())" class="bg-red-500 text-white px-3 py-1 rounded">X</button></td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+</table>
+</div>
+
+<script>
+new Chart(document.getElementById('pieChart'),
+{
+    type:'pie',
+    data:{labels:{{career_labels|tojson}},
+    datasets:[{data:{{career_counts|tojson}},
+    backgroundColor:['#8b5cf6','#3b82f6','#10b981','#f59e0b','#ef4444']}]},
+    options:{responsive:true}
+}
+);
+new Chart(document.getElementById('barChart'),
+{
+    type:'bar',
+    data:{labels:{{marks_names|tojson}},
+    datasets:[{label:'Marks',data:{{marks_values|tojson}},
+    backgroundColor:'#8b5cf6'}]},
+    options:{responsive:true,scales:{y:{beginAtZero:true,max:100}}}
+});
+</script>
+
+</body>
+</html>

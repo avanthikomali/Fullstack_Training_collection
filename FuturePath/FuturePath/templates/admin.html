@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-4">
+<h1 class="text-3xl font-bold text-center mb-6">Admin Dashboard - FuturePath</h1>
+<div class="bg-white rounded shadow overflow-x-auto">
+<table class="w-full text-sm">
+<thead class="bg-blue-600 text-white">
+    <tr>
+        <th class="p-3">ID</th>
+        <th class="p-3">Name</th>
+        <th class="p-3">Email</th>
+        <th class="p-3">Phone</th>
+        <th class="p-3">School</th>
+        <th class="p-3">Marks</th>
+        <th class="p-3">Interest</th>
+        <th class="p-3">Career</th>
+        <th class="p-3">Actions</th>
+    </tr>
+</thead>
+<tbody>
+{% for s in students %}
+<tr class="border-b text-center">
+    <td class="p-2">{{ s[0] }}</td>
+    <td class="p-2">{{ s[1] }}</td>
+    <td class="p-2">{{ s[2] }}</td>
+    <td class="p-2">{{ s[3] }}</td>
+    <td class="p-2">{{ s[4] }}</td>
+    <td class="p-2">{{ s[5] }}</td>
+    <td class="p-2">{{ s[6] }}</td>
+    <td class="p-2 font-bold text-blue-600">{{ s[7] }}</td>
+
+<td class="p-2">
+    <button onclick="editStudent('{{ s[0] }}','{{ s[1] }}','{{ s[5] }}','{{ s[6] }}')" class="bg-blue-500 text-white px-2 py-1 rounded">Edit</button>
+    <button onclick="deleteStudent('{{ s[0] }}')" class="bg-red-500 text-white px-2 py-1 rounded ml-1">Delete</button>
+</td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+<script>
+
+function deleteStudent(id){ if(confirm("Delete cheyala?")){ fetch(`/delete-student/${id}`).then(()=>location.reload());
+ } }
+function editStudent(id,name,marks,interest){ let n=prompt("New Name:",name);
+ let m=prompt("New Marks:",marks);
+  let i=prompt("New Interest:",interest); 
+  if(n&&m&&i)
+  {
+     fetch(`/edit-student/${id}`,
+     {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({name:n,marks:m,interest:i})
+    
+        then(()=>location.reload());
+     } }
+</script>
+</body>
+</html>

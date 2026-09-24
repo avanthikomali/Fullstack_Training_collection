@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body
+{
+    font-family:'Poppins',sans-serif;
+     background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+      min-height:100vh;
+    }
+
+.glass
+{
+    background:rgba(255,255,255,0.95);
+     backdrop-filter:blur(15px); 
+     border-radius:20px;
+      box-shadow:0 20px 40px rgba(0,0,0,0.2); 
+      transition:0.4s;
+    }
+
+.glass:hover
+{
+    transform:translateY(-5px) scale(1.01);
+     box-shadow:0 30px 60px rgba(0,0,0,0.3);
+    }
+
+.btn-premium
+{
+    background:linear-gradient(90deg,#667eea,#764ba2);
+     transition:0.3s;
+    }
+
+.btn-premium:hover
+{
+    transform:scale(1.05);
+     box-shadow:0 10px 20px rgba(102,126,234,0.4);
+    }
+
+.chatbot-bubble
+{
+    position:fixed;
+     bottom:20px;
+      right:20px; 
+      z-index:1000;
+    }
+    
+.chat-window
+{
+    display:none;
+     position:fixed; 
+     bottom:90px;
+      right:20px; 
+      width:320px;
+       height:400px;
+        background:white; 
+        border-radius:15px;
+         box-shadow:0 10px 30px rgba(0,0,0,0.3);
+          z-index:1000;
+        }
